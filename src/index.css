@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Core dark background matching original design */
+    --background: 215 45% 8%;
+    --foreground: 0 0% 98%;
+
+    /* Card styling */
+    --card: 217 35% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 217 35% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary brand orange/yellow */
+    --primary: 43 96% 56%;
+    --primary-foreground: 215 45% 8%;
+
+    /* Secondary styling */
+    --secondary: 217 35% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Muted colors */
+    --muted: 217 35% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    /* Accent colors */
+    --accent: 217 35% 15%;
+    --accent-foreground: 0 0% 98%;
+
+    /* WhatsApp green */
+    --whatsapp: 120 100% 40%;
+    --whatsapp-foreground: 0 0% 100%;
+
+    /* Purple for progress bar */
+    --progress: 259 94% 51%;
+    --progress-foreground: 0 0% 100%;
+
+    /* Success green */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning/PDF red */
+    --warning: 0 84% 60%;
+    --warning-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217 35% 20%;
+    --input: 217 35% 15%;
+    --ring: 43 96% 56%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Keep same colors for consistency - design is inherently dark */
+    --background: 215 45% 8%;
+    --foreground: 0 0% 98%;
+    --card: 217 35% 12%;
+    --card-foreground: 0 0% 98%;
+    --popover: 217 35% 12%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 43 96% 56%;
+    --primary-foreground: 215 45% 8%;
+    --secondary: 217 35% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 217 35% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 217 35% 15%;
+    --accent-foreground: 0 0% 98%;
+    --whatsapp: 120 100% 40%;
+    --whatsapp-foreground: 0 0% 100%;
+    --progress: 259 94% 51%;
+    --progress-foreground: 0 0% 100%;
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 0 84% 60%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 35% 20%;
+    --input: 217 35% 15%;
+    --ring: 43 96% 56%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  /* Custom gradient backgrounds */
+  .bg-progress-gradient {
+    background: linear-gradient(45deg, 
+      hsl(var(--progress)) 0%, 
+      hsl(var(--progress)) 25%, 
+      transparent 25%, 
+      transparent 50%, 
+      hsl(var(--progress)) 50%, 
+      hsl(var(--progress)) 75%, 
+      transparent 75%);
+    background-size: 20px 20px;
+    animation: progressStripes 2s linear infinite;
+  }
+
+  @keyframes progressStripes {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 0; }
+  }
+
+  /* Pulsing animation for CTA button */
+  .pulse-green {
+    animation: pulseGreen 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGreen {
+    0%, 100% { 
+      box-shadow: 0 0 0 0 hsl(var(--whatsapp) / 0.7);
+      transform: scale(1);
+    }
+    50% { 
+      box-shadow: 0 0 0 20px hsl(var(--whatsapp) / 0);
+      transform: scale(1.02);
+    }
+  }
+
+  /* Hover effects for cards */
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px hsl(var(--primary) / 0.1);
+  }
+}
